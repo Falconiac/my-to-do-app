@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function ToDoItem({ toDoText, doneOrNot, archiveOrDelete }) {
   return (
     <ToDoStyle>
-      <p>This ist some test-text...</p>
+      <p>{toDoText}</p>
       <div>
         <ButtonDefault>{doneOrNot} done or not </ButtonDefault>
         <ButtonDefault>{archiveOrDelete} archive or delete</ButtonDefault>
