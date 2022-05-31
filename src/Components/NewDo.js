@@ -12,7 +12,7 @@ export default function CreateDo() {
         type="text"
         placeholder="Don't forget to create a toDo"
       />
-      <ButtonDefault>add it</ButtonDefault>
+      <ButtonDefault>+ add +</ButtonDefault>
     </NewToDoSection>
   );
 }

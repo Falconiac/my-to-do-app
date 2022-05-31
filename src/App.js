@@ -3,12 +3,14 @@ import React from "react";
 import styled from "styled-components";
 import Header from "./Components/Header.js";
 import CreateDo from "./Components/NewDo.js";
+import ToDoItem from "./Components/ToDoItem.js";
 
 function App() {
   return (
     <Body>
       <Header />
       <CreateDo />
+      <ToDoItem />
     </Body>
   );
 }
