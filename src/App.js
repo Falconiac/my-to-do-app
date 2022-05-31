@@ -5,19 +5,24 @@ import Header from "./Components/Header.js";
 import CreateDo from "./Components/NewDo.js";
 import ToDoItem from "./Components/ToDoItem.js";
 import { useState } from "react";
-
-
-const[toDo, setToDo]
-
-
-
+import { nanoid } from "nanoid";
 
 function App() {
+  const [toDos, setToDoS] = useState([
+    { id: nanoid(), text: "Do this", isDone: false, archived: false },
+    { id: nanoid(), text: "Do that", isDone: false, archived: false },
+    { id: nanoid(), text: "Do this too", isDone: false, archived: false },
+  ]);
+
+  function makeToDos() {
+    return toDos.map((item) => <ToDoItem key={item.id} text={item.text} />);
+  }
+
   return (
     <Body>
       <Header />
       <CreateDo />
-      <ToDoItem toDoText="This is a to Do..." doneOrNot="false" />
+      {makeToDos()}
     </Body>
   );
 }

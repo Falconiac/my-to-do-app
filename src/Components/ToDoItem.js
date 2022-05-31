@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ToDoItem({ toDoText, doneOrNot, archiveOrDelete }) {
+export default function ToDoItem({ text, isDone }) {
   return (
     <ToDoStyle>
-      <p>{toDoText}</p>
+      <p>{text}</p>
       <div>
-        <ButtonDefault>{doneOrNot} done or not </ButtonDefault>
-        <ButtonDefault>{archiveOrDelete} archive or delete</ButtonDefault>
+        <ButtonDefault>{isDone ? "uncomplete" : "complete"} </ButtonDefault>
+        <ButtonDefault>{isDone ? "archive" : "delete"}</ButtonDefault>
       </div>
     </ToDoStyle>
   );
@@ -16,8 +16,7 @@ export default function ToDoItem({ toDoText, doneOrNot, archiveOrDelete }) {
 const ToDoStyle = styled.article`
   height: 7em;
   width: 90%;
-  margin: 1em auto;
-
+  margin: 2em auto;
   border: 0.3em solid #8d9db6;
   border-radius: 2em;
 
