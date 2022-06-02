@@ -1,13 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ToDoItem({ text, isDone }) {
+export default function ToDoItem({
+  id,
+  text,
+  isDone,
+  donner,
+  abstellgleis,
+  toerminate,
+}) {
   return (
-    <ToDoStyle>
+    <ToDoStyle isDone={isDone}>
       <p>{text}</p>
       <div>
-        <ButtonDefault>{isDone ? "uncomplete" : "complete"} </ButtonDefault>
-        <ButtonDefault>{isDone ? "archive" : "delete"}</ButtonDefault>
+        <ButtonDefault onClick={() => donner(id)}>
+          {isDone ? "uncomplete" : "complete"}
+        </ButtonDefault>
+        <ButtonDefault
+          onClick={() => {
+            isDone ? abstellgleis(id) : toerminate(id);
+          }}
+        >
+          {isDone ? "archive" : "delete"}
+        </ButtonDefault>
       </div>
     </ToDoStyle>
   );
@@ -19,6 +34,9 @@ const ToDoStyle = styled.article`
   margin: 2em auto;
   border: 0.3em solid #8d9db6;
   border-radius: 2em;
+  font-weight: bold;
+
+  background-color: ${(props) => (props.isDone ? "green" : "red")};
 
   display: flex;
   justify-content: space-between;
@@ -42,7 +60,7 @@ const ToDoStyle = styled.article`
 const ButtonDefault = styled.button`
 height 4em;
 width: 10em;
-background-color: #667292;
+background-color:${(props) => (props.isDone ? "red" : "#667292")};
 color: greenyellow;
 border-radius: 2em;
 

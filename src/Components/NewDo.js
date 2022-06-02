@@ -1,18 +1,29 @@
 import "../App.css";
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function CreateDo() {
+export default function CreateDo({ addToDo }) {
+  const [text, setText] = useState("");
   return (
     <NewToDoSection>
-      <LabelStyle for="toDoInput">new ToDo:</LabelStyle>
-      <InputField
-        id="toDoInput"
-        type="text"
-        placeholder="Don't forget to create a toDo"
-      />
-      <ButtonDefault>+ add +</ButtonDefault>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          addToDo(text);
+          console.log(text);
+        }}
+      >
+        <LabelStyle htmlFor="toDoInput">new ToDo:</LabelStyle>
+        <InputField
+          id="toDoInput"
+          type="text"
+          value={text}
+          placeholder="Don't forget to create a toDo"
+          onChange={(event) => setText(event.target.value)}
+        />
+        <ButtonDefault type="submit">+ add +</ButtonDefault>
+      </form>
     </NewToDoSection>
   );
 }
@@ -22,7 +33,7 @@ const NewToDoSection = styled.span`
   justify-content: space-evenly;
   align-items: center;
   background-color: #8d9db6;
-  height: 10vh;
+  height: 12vh;
 `;
 
 const LabelStyle = styled.label`
