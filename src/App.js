@@ -7,6 +7,10 @@ import Footer from "./Components/Footer.js";
 import ToDoItem from "./Components/ToDoItem.js";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Archive from "./pages/Archive";
+import Random from "./pages/Random";
 
 function App() {
   const [toDos, setToDoS] = useState([
@@ -14,21 +18,6 @@ function App() {
     { id: nanoid(), text: "Do that", isDone: true, archived: false },
     { id: nanoid(), text: "Do this too", isDone: false, archived: false },
   ]);
-
-  function makeToDos() {
-    return toDos.map((item) => (
-      <ToDoItem
-        key={item.id}
-        id={item.id}
-        text={item.text}
-        isDone={item.isDone}
-        archived={item.archived}
-        donner={changeDone}
-        abstellgleis={toArchive}
-        toerminate={deleteItem}
-      />
-    ));
-  }
 
   function toArchive(id) {
     const archivator = toDos.map((item) => {
@@ -69,9 +58,46 @@ function App() {
 
   return (
     <Body>
-      <Header />
-      <CreateDo addToDo={addNewToDo} />
-      {makeToDos()}
+      {/* <Header value={"Startseite"} /> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              arrToDos={toDos}
+              changeDon={changeDone}
+              archivator={toArchive}
+              deleter={deleteItem}
+              createNew={addNewToDo}
+            />
+          }
+        />
+        <Route
+          path="/Archive"
+          element={
+            <Archive
+              arrToDos={toDos}
+              changeDon={changeDone}
+              archivator={toArchive}
+              deleter={deleteItem}
+              createNew={addNewToDo}
+            />
+          }
+        />
+        <Route
+          path="/Random"
+          element={
+            <Random
+              arrToDos={toDos}
+              changeDon={changeDone}
+              archivator={toArchive}
+              deleter={deleteItem}
+              createNew={addNewToDo}
+            />
+          }
+        />
+      </Routes>
+
       <Footer />
     </Body>
   );

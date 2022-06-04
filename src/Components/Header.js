@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Header() {
   return (
     <Heading>
-      <p>To-Do-App</p>
+      <h2>ToDo-App</h2>
     </Heading>
   );
 }
@@ -12,8 +12,11 @@ export default function Header() {
 const Heading = styled.header`
   background-color: #8d9db6;
   height: 10vh;
+  width: 100%
+  position: fixed;
+  top:0;
 
-  p {
+  h2 {
     color: #f1e3dd;
     font-size: 4em;
     text-align: center;
